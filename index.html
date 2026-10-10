@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Happy Birthday, Nong!</title>
+<style>
+  :root { --cream:#fff8ee; --peach:#ffd8c2; --pink:#f6a9b8; --brown:#674b45; --rose:#c86d7c; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; display: grid; place-items: center; overflow: hidden;
+    font-family: "Trebuchet MS", Arial, sans-serif; color: var(--brown);
+    background: radial-gradient(circle at top, #fffdf7 0, var(--cream) 45%, #ffe5d8 100%);
+  }
+  .card {
+    position: relative; z-index: 2; width: min(90%, 520px); padding: 42px 28px 36px;
+    text-align: center; border: 2px solid rgba(255,255,255,.9); border-radius: 30px;
+    background: rgba(255,255,255,.78); box-shadow: 0 18px 55px rgba(148,91,77,.16);
+    animation: appear .9s ease both;
+  }
+  .cake { font-size: 54px; margin-bottom: 8px; animation: bob 2.5s ease-in-out infinite; }
+  h1 { font-size: clamp(2rem, 8vw, 3rem); margin: 8px 0 14px; color: var(--rose); line-height: 1.12; }
+  p { font-size: 1.12rem; line-height: 1.7; margin: 8px 0; }
+  .cat-row { display:flex; justify-content:center; gap:20px; margin: 24px 0 18px; }
+  .cat { font-size: 45px; display:inline-block; animation: catDance 2s ease-in-out infinite; }
+  .cat:nth-child(2) { animation-delay: .35s; }
+  .cat:nth-child(3) { animation-delay: .7s; }
+  .small { font-size: .9rem; color:#9a7770; margin-top: 22px; }
+  .float { position:fixed; bottom:-50px; z-index:1; opacity:.75; animation: floatUp linear infinite; pointer-events:none; }
+  @keyframes appear { from { opacity:0; transform:translateY(16px) scale(.98); } to { opacity:1; transform:none; } }
+  @keyframes bob { 0%,100% { transform:translateY(0) rotate(-3deg); } 50% { transform:translateY(-7px) rotate(3deg); } }
+  @keyframes catDance { 0%,100% { transform:rotate(-7deg) translateY(0); } 50% { transform:rotate(7deg) translateY(-8px); } }
+  @keyframes floatUp { from { transform:translateY(0) rotate(0deg); opacity:0; } 10% {opacity:.75;} to { transform:translateY(-115vh) rotate(35deg); opacity:0; } }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; } }
+</style>
+</head>
+<body>
+  <main class="card">
+    <div class="cake" aria-hidden="true">🎂</div>
+    <h1>Happy Birthday, Nong!</h1>
+    <p>Hope you had a great day!</p>
+    <div class="cat-row" aria-label="Three cute birthday cats">
+      <span class="cat">🐱</span><span class="cat">🐈</span><span class="cat">😺</span>
+    </div>
+    <p>Wishing you lots of happiness, laughter, and lovely little moments. ♡</p>
+    <div class="small">sent with a little birthday cheer ✨</div>
+  </main>
+<script>
+  const symbols = ['♡','♥','✦','🐾'];
+  for (let i = 0; i < 22; i++) {
+    const el = document.createElement('span');
+    el.className = 'float';
+    el.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+    el.style.left = Math.random() * 100 + 'vw';
+    el.style.animationDuration = (7 + Math.random() * 9) + 's';
+    el.style.animationDelay = (-Math.random() * 15) + 's';
+    el.style.fontSize = (14 + Math.random() * 18) + 'px';
+    document.body.appendChild(el);
+  }
+</script>
+</body>
+</html>
